@@ -25,7 +25,7 @@ Aplikacija je zamišljena kao platforma slična eBay-u ili Njuškalu, ali namije
 
 Projekt koristi sljedeće tehnologije i alate:
 
-- **ASP.NET Core 6 MVC** za razvoj web aplikacije.
+- **ASP.NET Core 9 MVC** za razvoj web aplikacije.
 - **Entity Framework Core** za upravljanje bazom podataka.
 - **SQL Server** za pohranu podataka.
 - **Bootstrap** za responzivan dizajn sučelja.
