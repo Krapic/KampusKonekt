@@ -1,0 +1,202 @@
+﻿@using BazePodatakaProjekt.Constants
+@model IEnumerable<BazePodatakaProjekt.ViewModels.JobPostingWithFollowStatusViewModel>
+
+@{
+    var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+}
+
+<h1 class="text-center m-5">Sve usluge</h1>
+
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        var jobPosting = item.JobPosting;
+        var isFollowing = item.IsFollowing;
+
+        <div class="list-group-item @(jobPosting.IsApproved ? "list-group-item-success" : "list-group-item-warning") mt-2" id="job-posting-@jobPosting.Id">
+            <h3>@jobPosting.Title</h3>
+            <p>@jobPosting.Description</p>
+            <p><strong>E-mail:</strong> @jobPosting.User?.Email</p>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <p><strong>Tvrtka:</strong> @jobPosting.Company</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Lokacija:</strong> @jobPosting.Location</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Kategorija:</strong> @jobPosting.Category?.Name</p>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <p><strong>Cijena:</strong> @jobPosting.Price.ToString("C", new System.Globalization.CultureInfo("de-DE"))</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Stanje:</strong> @jobPosting.Condition</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Datum objave:</strong> @jobPosting.PostedDate.ToShortDateString()</p>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <p><strong>Status:</strong> @(jobPosting.IsApproved ? "Odobreno" : "Na čekanju")</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Lajkovi:</strong> <span id="like-count-@jobPosting.Id">@jobPosting.LikeCount</span></p>
+                </div>
+            </div>
+
+            @if (jobPosting.Images != null && jobPosting.Images.Any())
+            {
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <strong>Slike:</strong>
+                        @foreach (var image in jobPosting.Images)
+                        {
+                            <img src="@image.Url" alt="Slika oglasa" class="img-thumbnail" style="max-width: 200px; max-height: 200px;" />
+                        }
+                    </div>
+                </div>
+            }
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    @if (User.Identity.IsAuthenticated && jobPosting.UserId != currentUserId || User.IsInRole(Roles.Admin))
+                    {
+                        <div class="mb-2">
+                            @{
+                                var hasLiked = jobPosting.Likes.Any(l => l.UserId == currentUserId);
+                            }
+                            <button onclick="likeJobPosting(@jobPosting.Id)" class="btn btn-sm @(hasLiked ? "btn-danger" : "btn-outline-danger")">
+                                @if (hasLiked)
+                                {
+                                    <text>❤️ Lajkano</text>
+                                }
+                                else
+                                {
+                                    <text>❤️ Lajkaj</text>
+                                }
+                            </button>
+
+                            <button onclick="@(isFollowing ? "unfollowUser('" + jobPosting.UserId + "')" : "followUser('" + jobPosting.UserId + "')")"
+                                    class="btn btn-sm @(isFollowing ? "btn-primary" : "btn-outline-primary")">
+                                @if (isFollowing)
+                                {
+                                    <text>👤 Pratite</text>
+                                }
+                                else
+                                {
+                                    <text>👤 Pratite korisnika</text>
+                                }
+                            </button>
+                        </div>
+                    }
+
+                    @if (User.IsInRole(Roles.Admin) || (User.IsInRole(Roles.Employer) && jobPosting.UserId == currentUserId))
+                    {
+                        <div class="md-3">
+                            <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-sm btn-danger">Obriši</button>
+                        </div>
+                    }
+
+                    @if (User.IsInRole(Roles.Admin) && !jobPosting.IsApproved)
+                    {
+                        <div>
+                            <button onclick="approveJobPosting(@jobPosting.Id)" class="btn btn-sm btn-success">Odobri</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function deleteJobPosting(id) {
+            if (confirm("Jeste li sigurni da želite obrisati ovaj oglas?")) {
+                $.ajax({
+                    url: "@Url.Action("Delete", "JobPostings")/" + id,
+                    type: "delete",
+                    success: function (result) {
+                        $("#job-posting-" + id).remove();
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+            }
+        }
+
+        function approveJobPosting(id) {
+            if (confirm("Jeste li sigurni da želite odobriti ovaj oglas?")) {
+                $.ajax({
+                    url: "@Url.Action("Approve", "JobPostings")/" + id,
+                    type: "post",
+                    success: function (result) {
+                        location.reload(); // Osvježi stranicu nakon odobravanja
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+            }
+        }
+
+        function likeJobPosting(jobPostingId) {
+            console.log("Like button clicked for job posting ID:", jobPostingId);
+            $.ajax({
+                url: "@Url.Action("Like", "JobPostings")",
+                type: "post",
+                data: { jobPostingId: jobPostingId },
+                success: function (result) {
+                    console.log("Like successful. New like count:", result.likeCount);
+                    $("#like-count-" + jobPostingId).text(result.likeCount);
+                    location.reload(); // Osvježi stranicu kako bi se prikazala ažurirana tipka za lajkanje
+                },
+                error: function (err) {
+                    console.error("Error while liking:", err);
+                    alert("Došlo je do greške prilikom lajkanja.");
+                }
+            });
+        }
+
+        function followUser(userId) {
+            console.log("Follow button clicked for user ID:", userId);
+            $.ajax({
+                url: "@Url.Action("FollowUser", "User")",
+                type: "post",
+                data: { userId: userId },
+                success: function (result) {
+                    alert("Sada pratite ovog korisnika.");
+                    location.reload(); // Osvježi stranicu kako bi se prikazala ažurirana tipka
+                },
+                error: function (err) {
+                    console.error("Error while following user:", err);
+                    alert("Došlo je do greške prilikom praćenja korisnika.");
+                }
+            });
+        }
+
+        function unfollowUser(userId) {
+            console.log("Unfollow button clicked for user ID:", userId);
+            $.ajax({
+                url: "@Url.Action("UnfollowUser", "User")",
+                type: "post",
+                data: { userId: userId },
+                success: function (result) {
+                    alert("Prestali ste pratiti ovog korisnika.");
+                    location.reload(); // Osvježi stranicu kako bi se prikazala ažurirana tipka
+                },
+                error: function (err) {
+                    console.error("Error while unfollowing user:", err);
+                    alert("Došlo je do greške prilikom otpraćivanja korisnika.");
+                }
+            });
+        }
+    </script>
+}

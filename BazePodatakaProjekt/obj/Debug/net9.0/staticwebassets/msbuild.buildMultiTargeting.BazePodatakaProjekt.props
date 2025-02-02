@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BazePodatakaProjekt.props" />
+</Project>

@@ -1,0 +1,181 @@
+﻿@model BazePodatakaProjekt.ViewModels.UserProfileViewModel
+
+@{
+    ViewData["Title"] = "Profil korisnika";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Profil korisnika</h1>
+
+    <!-- Osnovni podaci -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">Osnovni podaci</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Korisničko ime:</strong> @Model.User.UserName</p>
+            <p><strong>Email:</strong> @Model.User.Email</p>
+            <p><strong>Broj telefona:</strong> @Model.User.PhoneNumber</p>
+            <p><strong>Ime:</strong> @Model.EditProfile.FirstName</p>
+            <p><strong>Prezime:</strong> @Model.EditProfile.LastName</p>
+            <p><strong>Fakultet:</strong> @Model.EditProfile.Faculty</p>
+            <p><strong>Bio:</strong> @Model.EditProfile.Bio</p>
+            @if (!string.IsNullOrEmpty(Model.EditProfile.ProfilePicture))
+            {
+                <p><strong>Profilna slika:</strong></p>
+                <img src="@Model.EditProfile.ProfilePicture" alt="Profilna slika" class="img-thumbnail" style="max-width: 200px; max-height: 200px;" />
+            }
+        </div>
+    </div>
+
+    <!-- Objavljeni oglasi -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">Objavljeni oglasi</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                @foreach (var jobPosting in Model.JobPostings)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>@jobPosting.Title</h5>
+                            <p>@jobPosting.Description</p>
+                        </div>
+                        <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-danger btn-sm">Obriši</button>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- Pratitelji -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">Pratitelji</h2>
+        </div>
+        <div class="card-body">
+            <p class="h4">Broj pratitelja: @Model.Followers.Count</p>
+        </div>
+    </div>
+
+    <!-- Korisnici koje pratim -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">Prati</h2>
+        </div>
+        <div class="card-body">
+            <p class="h4">Broj korisnika koje pratim: @Model.Following.Count</p>
+        </div>
+    </div>
+
+    <!-- Uredi profil -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">Uredi profil</h2>
+        </div>
+        <div class="card-body">
+            <form id="profileForm" asp-action="EditProfile" asp-controller="Profile" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label asp-for="EditProfile.FirstName">Ime</label>
+                    <input asp-for="EditProfile.FirstName" class="form-control" />
+                    <span asp-validation-for="EditProfile.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EditProfile.LastName">Prezime</label>
+                    <input asp-for="EditProfile.LastName" class="form-control" />
+                    <span asp-validation-for="EditProfile.LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EditProfile.Email">Email</label>
+                    <input asp-for="EditProfile.Email" type="email" class="form-control" />
+                    <span asp-validation-for="EditProfile.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EditProfile.PhoneNumber">Broj telefona</label>
+                    <input asp-for="EditProfile.PhoneNumber" type="tel" class="form-control" />
+                    <span asp-validation-for="EditProfile.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EditProfile.Faculty">Fakultet</label>
+                    <input asp-for="EditProfile.Faculty" class="form-control" />
+                    <span asp-validation-for="EditProfile.Faculty" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EditProfile.Bio">Bio</label>
+                    <input asp-for="EditProfile.Bio" class="form-control" />
+                    <span asp-validation-for="EditProfile.Bio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EditProfile.ProfilePicture">Profilna slika</label>
+                    <input asp-for="EditProfile.ProfilePicture" type="text" class="form-control" />
+                    <span asp-validation-for="EditProfile.ProfilePicture" class="text-danger"></span>
+                </div>
+
+                <button type="button" onclick="saveProfile()" class="btn btn-primary">Spremi promjene</button>
+            </form>
+        </div>
+    </div>
+
+@section Scripts {
+    <script>
+        function deleteJobPosting(jobPostingId) {
+            if (confirm("Jeste li sigurni da želite obrisati ovaj oglas?")) {
+                $.ajax({
+                    url: "/JobPostings/Delete/" + jobPostingId,
+                    type: "DELETE",
+                    success: function (result) {
+                        alert("Oglas je uspješno obrisan.");
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Greška prilikom brisanja oglasa:", error);
+                        alert("Došlo je do greške prilikom brisanja oglasa.");
+                    }
+                });
+            }
+        }
+
+        function saveProfile() {
+            var formData = new FormData(document.getElementById("profileForm"));
+            var jsonData = {
+                FirstName: formData.get("EditProfile.FirstName"),
+                LastName: formData.get("EditProfile.LastName"),
+                Email: formData.get("EditProfile.Email"),
+                PhoneNumber: formData.get("EditProfile.PhoneNumber"),
+                Faculty: formData.get("EditProfile.Faculty"),
+                Bio: formData.get("EditProfile.Bio"),
+                ProfilePicture: formData.get("EditProfile.ProfilePicture")
+            };
+
+            fetch("/Profile/EditProfile", {
+                method: "POST",
+                body: JSON.stringify(jsonData),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = "/Profile/Index";
+                } else {
+                    alert(data.errors.join("\n"));
+                }
+            })
+            .catch(error => {
+                console.error("Greška:", error);
+                alert("Došlo je do greške prilikom spremanja profila.");
+            });
+        }
+    </script>
+}
