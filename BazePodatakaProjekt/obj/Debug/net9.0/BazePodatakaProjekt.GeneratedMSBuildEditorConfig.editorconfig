@@ -60,8 +60,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUG9zdGluZ3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/krapi/source/repos/BazePodatakaProjekt/BazePodatakaProjekt/Views/JobPostings/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUG9zdGluZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/krapi/source/repos/BazePodatakaProjekt/BazePodatakaProjekt/Views/JobPostings/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUG9zdGluZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krapi/source/repos/BazePodatakaProjekt/BazePodatakaProjekt/Views/JobPostings/LikedPosts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUG9zdGluZ3NcTGlrZWRQb3N0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/krapi/source/repos/BazePodatakaProjekt/BazePodatakaProjekt/Views/Profile/Index.cshtml]

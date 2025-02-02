@@ -42,10 +42,21 @@
                             <h5>@jobPosting.Title</h5>
                             <p>@jobPosting.Description</p>
                         </div>
+                        <a asp-action="Edit" asp-controller="JobPostings" asp-route-id="@jobPosting.Id" class="btn btn-warning">Uredi</a>
                         <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-danger btn-sm">Obriši</button>
                     </li>
                 }
             </ul>
+        </div>
+    </div>
+
+    <!-- Favoriti -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title">Favoriti</h2>
+        </div>
+        <div class="card-body">
+            <strong><a class="nav-link text-dark" asp-controller="JobPostings" asp-action="LikedPosts">Svi omiljeni oglasi</a></strong>
         </div>
     </div>
 

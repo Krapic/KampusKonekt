@@ -4,6 +4,7 @@ namespace BazePodatakaProjekt.ViewModels
 {
     public class JobPostingViewModel
     {
+        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
 

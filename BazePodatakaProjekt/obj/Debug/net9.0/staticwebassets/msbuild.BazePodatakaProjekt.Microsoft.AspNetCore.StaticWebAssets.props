@@ -1,22 +1,22 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BazePodatakaProjekt.qmqkvt0618.bundle.scp.css'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>BazePodatakaProjekt</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/BazePodatakaProjekt</BasePath>
-      <RelativePath>BazePodatakaProjekt.qmqkvt0618.bundle.scp.css</RelativePath>
+      <RelativePath>BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>Reference</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>qmqkvt0618</Fingerprint>
-      <Integrity>Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=</Integrity>
+      <Fingerprint>vbrcobjm4x</Fingerprint>
+      <Integrity>pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BazePodatakaProjekt.qmqkvt0618.bundle.scp.css'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))">
       <SourceType>Package</SourceType>

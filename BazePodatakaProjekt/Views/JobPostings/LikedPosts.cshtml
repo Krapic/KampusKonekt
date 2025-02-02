@@ -1,0 +1,70 @@
+﻿@model List<BazePodatakaProjekt.Models.JobPosting>
+
+@{
+    ViewData["Title"] = "Oglasi koje ste lajkali";
+}
+
+<form id="likeForm" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="csrfToken" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+</form>
+
+<h2>Oglasi koje ste lajkali</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Nemate omiljene oglase.</p>
+}
+else
+{
+    <div class="row mt-5">
+        @foreach (var jobPosting in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@jobPosting.Title</h5>
+                        <p class="card-text">@jobPosting.Description</p>
+                        <p><strong>Fakultet:</strong> @jobPosting.Company</p>
+                        <p><strong>Lokacija:</strong> @jobPosting.Location</p>
+                        <p><strong>Kategorija:</strong> @jobPosting.Category.Name</p>
+                        <p><strong>Cijena:</strong> @jobPosting.Price eur</p>
+                        <p><strong>Stanje:</strong> @jobPosting.Condition</p>
+
+                        <button class="btn btn-danger like-button" data-jobposting-id="@jobPosting.Id">
+                            ❌ Ukloni iz favorita
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".like-button").forEach(button => {
+                button.addEventListener("click", function () {
+                    var jobPostingId = this.getAttribute("data-jobposting-id");
+                    var token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                    fetch("/JobPostings/Like?jobPostingId=" + jobPostingId, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "RequestVerificationToken": token
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert("Promjena uspješna! Oglas će biti uklonjen.");
+                        location.reload();
+                    })
+                    .catch(error => console.error("Greška:", error));
+                });
+            });
+        });
+    </script>
+}
+

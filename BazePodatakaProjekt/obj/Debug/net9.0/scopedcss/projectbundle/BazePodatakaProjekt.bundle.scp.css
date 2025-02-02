@@ -8,6 +8,16 @@ a.navbar-brand[b-tig6j2a4rf] {
   word-break: break-all;
 }
 
+.navbar[b-tig6j2a4rf] {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030; /* Osigurava da navbar ostane iznad drugih elemenata */
+    background-color: white; /* Osigurava vidljivost */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Blaga sjena */
+}
+
 a[b-tig6j2a4rf] {
   color: #0077cc;
 }

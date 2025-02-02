@@ -79,8 +79,6 @@ C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\ne
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\1utclgizal-muycvpuwrr.gz
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\mlp7t52nv0-87fc7y1x7t.gz
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\s19rpeembm-mlv21k5csn.gz
-C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\n46cfp8xts-qmqkvt0618.gz
-C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\cy34d77uln-qmqkvt0618.gz
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -418,3 +416,6 @@ C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\bin\Debug\ne
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\BazePodatakaProjekt.sourcelink.json
+C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\n46cfp8xts-vbrcobjm4x.gz
+C:\Users\krapi\source\repos\BazePodatakaProjekt\BazePodatakaProjekt\obj\Debug\net9.0\compressed\cy34d77uln-vbrcobjm4x.gz

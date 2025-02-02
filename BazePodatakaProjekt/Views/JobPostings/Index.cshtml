@@ -7,6 +7,12 @@
 
 <h1 class="text-center m-5">Sve usluge</h1>
 
+<div class="btn-group mb-3">
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["CategorySortParam"]" class="btn btn-secondary">Sortiraj po kategoriji</a>
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParam"]" class="btn btn-secondary">Sortiraj po cijeni</a>
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParam"]" class="btn btn-secondary">Sortiraj po datumu</a>
+</div>
+
 <div class="list-group">
     @foreach (var item in Model)
     {
@@ -19,7 +25,7 @@
             <p><strong>E-mail:</strong> @jobPosting.User?.Email</p>
             <div class="row mt-3">
                 <div class="col-md-4">
-                    <p><strong>Tvrtka:</strong> @jobPosting.Company</p>
+                    <p><strong>Fakultet:</strong> @jobPosting.Company</p>
                 </div>
                 <div class="col-md-4">
                     <p><strong>Lokacija:</strong> @jobPosting.Location</p>
@@ -74,11 +80,11 @@
                             <button onclick="likeJobPosting(@jobPosting.Id)" class="btn btn-sm @(hasLiked ? "btn-danger" : "btn-outline-danger")">
                                 @if (hasLiked)
                                 {
-                                    <text>❤️ Lajkano</text>
+                                    <text>❤️ Sviđa mi se</text>
                                 }
                                 else
                                 {
-                                    <text>❤️ Lajkaj</text>
+                                    <text>❤️ Sviđa ti se?</text>
                                 }
                             </button>
 

@@ -1,4 +1,5 @@
-﻿using BazePodatakaProjekt.Constants;
+﻿using System.Security.Claims;
+using BazePodatakaProjekt.Constants;
 using BazePodatakaProjekt.Data;
 using BazePodatakaProjekt.Models;
 using BazePodatakaProjekt.Repositories;
@@ -6,6 +7,7 @@ using BazePodatakaProjekt.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BazePodatakaProjekt.Controllers
@@ -25,25 +27,59 @@ namespace BazePodatakaProjekt.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
+            // Definiraj parametre sortiranja za gumbove u view-u
+            ViewData["CategorySortParam"] = sortOrder == "category" ? "category_desc" : "category";
+            ViewData["PriceSortParam"] = sortOrder == "price" ? "price_desc" : "price";
+            ViewData["DateSortParam"] = sortOrder == "date" ? "date_desc" : "date";
+
             var currentUserId = _userManager.GetUserId(User);
-            var jobPostings = await _context.JobPostings
+
+            var jobPostings = _context.JobPostings
                 .Include(jp => jp.Likes)
                 .Include(jp => jp.Category)
                 .Include(jp => jp.Images)
                 .Include(jp => jp.Reviews)
-                .Include(jp => jp.User) // Dodajte ovu liniju za uključivanje korisničkih podataka
-                .ToListAsync();
+                .Include(jp => jp.User)
+                .AsQueryable(); // Omogućava dinamičko sortiranje
 
-            var viewModel = jobPostings.Select(jp => new JobPostingWithFollowStatusViewModel
+            // Primjeni sortiranje na temelju sortOrder parametra
+            switch (sortOrder)
             {
-                JobPosting = jp,
-                IsFollowing = _context.UserFollows.Any(uf => uf.FollowerId == currentUserId && uf.FollowedId == jp.UserId)
-            }).ToList();
+                case "category":
+                    jobPostings = jobPostings.OrderBy(jp => jp.Category.Name);
+                    break;
+                case "category_desc":
+                    jobPostings = jobPostings.OrderByDescending(jp => jp.Category.Name);
+                    break;
+                case "price":
+                    jobPostings = jobPostings.OrderBy(jp => jp.Price);
+                    break;
+                case "price_desc":
+                    jobPostings = jobPostings.OrderByDescending(jp => jp.Price);
+                    break;
+                case "date":
+                    jobPostings = jobPostings.OrderBy(jp => jp.PostedDate);
+                    break;
+                case "date_desc":
+                    jobPostings = jobPostings.OrderByDescending(jp => jp.PostedDate);
+                    break;
+                default:
+                    jobPostings = jobPostings.OrderByDescending(jp => jp.PostedDate); // Zadano sortiranje
+                    break;
+            }
+
+            var viewModel = await jobPostings
+                .Select(jp => new JobPostingWithFollowStatusViewModel
+                {
+                    JobPosting = jp,
+                    IsFollowing = _context.UserFollows.Any(uf => uf.FollowerId == currentUserId && uf.FollowedId == jp.UserId)
+                }).ToListAsync();
 
             return View(viewModel);
         }
+
 
         [Authorize(Roles = "Admin, Employer")]
         public IActionResult Create()
@@ -181,6 +217,85 @@ namespace BazePodatakaProjekt.Controllers
             }
 
             return Json(new { LikeCount = jobPosting?.LikeCount ?? 0 });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var jobPosting = await _context.JobPostings.FindAsync(id);
+            if (jobPosting == null || jobPosting.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();
+            }
+
+            var viewModel = new JobPostingViewModel
+            {
+                Id = jobPosting.Id,
+                Title = jobPosting.Title,
+                Description = jobPosting.Description,
+                Price = jobPosting.Price,
+                CategoryId = jobPosting.CategoryId,
+                Condition = jobPosting.Condition
+            };
+
+            ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name", jobPosting.CategoryId);
+
+            // Eksplicitno vraćamo View iz mape /Views/JobPostings/
+            return View("~/Views/JobPostings/Edit.cshtml", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(JobPostingViewModel model)
+        {
+            Console.WriteLine($"Edit metoda pozvana za ID: {model.Id}");
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                foreach (var error in errors)
+                {
+                    Console.WriteLine($"ModelState Error: {error}");
+                }
+
+                ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name", model.CategoryId);
+                return View("~/Views/JobPostings/Edit.cshtml", model);
+            }
+
+            var jobPosting = await _context.JobPostings.FindAsync(model.Id);
+            if (jobPosting == null || jobPosting.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                Console.WriteLine("Greška: Oglas nije pronađen ili korisnik nema dozvolu.");
+                return NotFound();
+            }
+
+            jobPosting.Title = model.Title;
+            jobPosting.Description = model.Description;
+            jobPosting.Price = model.Price;
+            jobPosting.CategoryId = model.CategoryId;
+            jobPosting.Condition = model.Condition;
+
+            await _context.SaveChangesAsync();
+
+            Console.WriteLine("Podaci su uspješno ažurirani!");
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public async Task<IActionResult> LikedPosts()
+        {
+            var currentUserId = _userManager.GetUserId(User);
+
+            var likedPosts = await _context.Likes
+                .Where(like => like.UserId == currentUserId)
+                .Include(like => like.JobPosting)
+                .ThenInclude(jp => jp.Category)
+                .Select(like => like.JobPosting)
+                .ToListAsync();
+
+
+            return View(likedPosts);
         }
     }
 }

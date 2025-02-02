@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CoT5nF+68QzfC4TVAe4qV3CSSrGuaY9PgD2KFiU8kyY=",
+  "Hash": "KhzsQEPNrn1B++KCpRjCid2bwtnRu55L72/TdfA+sEo=",
   "Source": "BazePodatakaProjekt",
   "BasePath": "_content/BazePodatakaProjekt",
   "Mode": "Default",
@@ -2117,12 +2117,12 @@
       "OriginalItemSpec": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-qmqkvt0618.gz",
+      "Identity": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-vbrcobjm4x.gz",
       "SourceId": "BazePodatakaProjekt",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/BazePodatakaProjekt",
-      "RelativePath": "BazePodatakaProjekt#[.{fingerprint=qmqkvt0618}]!.bundle.scp.css.gz",
+      "RelativePath": "BazePodatakaProjekt#[.{fingerprint=vbrcobjm4x}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -2131,8 +2131,8 @@
       "RelatedAsset": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\BazePodatakaProjekt.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "u16ne74e7x",
-      "Integrity": "nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=",
+      "Fingerprint": "wf01m9vybx",
+      "Integrity": "hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\BazePodatakaProjekt.bundle.scp.css"
@@ -2789,12 +2789,12 @@
       "OriginalItemSpec": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {
-      "Identity": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-qmqkvt0618.gz",
+      "Identity": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-vbrcobjm4x.gz",
       "SourceId": "BazePodatakaProjekt",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/BazePodatakaProjekt",
-      "RelativePath": "BazePodatakaProjekt#[.{fingerprint=qmqkvt0618}]?.styles.css.gz",
+      "RelativePath": "BazePodatakaProjekt#[.{fingerprint=vbrcobjm4x}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -2803,8 +2803,8 @@
       "RelatedAsset": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\bundle\\BazePodatakaProjekt.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "u16ne74e7x",
-      "Integrity": "nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=",
+      "Fingerprint": "wf01m9vybx",
+      "Integrity": "hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\bundle\\BazePodatakaProjekt.styles.css"
@@ -4000,8 +4000,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "qmqkvt0618",
-      "Integrity": "Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=",
+      "Fingerprint": "vbrcobjm4x",
+      "Integrity": "pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\bundle\\BazePodatakaProjekt.styles.css"
@@ -4021,8 +4021,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "qmqkvt0618",
-      "Integrity": "Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=",
+      "Fingerprint": "vbrcobjm4x",
+      "Integrity": "pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\BazePodatakaProjekt.bundle.scp.css"
@@ -5438,12 +5438,12 @@
   "Endpoints": [
     {
       "Route": "BazePodatakaProjekt.bundle.scp.css",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-qmqkvt0618.gz",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-vbrcobjm4x.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001477104874"
         }
       ],
       "ResponseHeaders": [
@@ -5453,15 +5453,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "676"
         },
         {
           "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5481,13 +5481,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
+          "Value": "W/\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
         }
       ]
     },
@@ -5502,7 +5502,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1137"
+          "Value": "1445"
         },
         {
           "Name": "Content-Type",
@@ -5510,11 +5510,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
+          "Value": "\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5524,13 +5524,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
         }
       ]
     },
     {
       "Route": "BazePodatakaProjekt.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-qmqkvt0618.gz",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-vbrcobjm4x.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5539,7 +5539,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "676"
         },
         {
           "Name": "Content-Type",
@@ -5547,11 +5547,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5569,18 +5569,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps="
+          "Value": "sha256-hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc="
         }
       ]
     },
     {
-      "Route": "BazePodatakaProjekt.qmqkvt0618.bundle.scp.css",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-qmqkvt0618.gz",
+      "Route": "BazePodatakaProjekt.styles.css",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-vbrcobjm4x.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001477104874"
         }
       ],
       "ResponseHeaders": [
@@ -5590,15 +5590,152 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "676"
         },
         {
           "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
+        }
+      ]
+    },
+    {
+      "Route": "BazePodatakaProjekt.styles.css",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\bundle\\BazePodatakaProjekt.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1445"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
+        }
+      ]
+    },
+    {
+      "Route": "BazePodatakaProjekt.styles.css.gz",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-vbrcobjm4x.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "676"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc="
+        }
+      ]
+    },
+    {
+      "Route": "BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-vbrcobjm4x.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001477104874"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "676"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5618,13 +5755,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
+          "Value": "W/\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qmqkvt0618"
+          "Value": "vbrcobjm4x"
         },
         {
           "Name": "label",
@@ -5632,12 +5769,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
         }
       ]
     },
     {
-      "Route": "BazePodatakaProjekt.qmqkvt0618.bundle.scp.css",
+      "Route": "BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css",
       "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\BazePodatakaProjekt.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5647,7 +5784,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1137"
+          "Value": "1445"
         },
         {
           "Name": "Content-Type",
@@ -5655,11 +5792,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
+          "Value": "\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5669,7 +5806,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qmqkvt0618"
+          "Value": "vbrcobjm4x"
         },
         {
           "Name": "label",
@@ -5677,13 +5814,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
         }
       ]
     },
     {
-      "Route": "BazePodatakaProjekt.qmqkvt0618.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-qmqkvt0618.gz",
+      "Route": "BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css.gz",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\cy34d77uln-vbrcobjm4x.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5692,7 +5829,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "676"
         },
         {
           "Name": "Content-Type",
@@ -5700,11 +5837,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5722,7 +5859,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qmqkvt0618"
+          "Value": "vbrcobjm4x"
         },
         {
           "Name": "label",
@@ -5730,18 +5867,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps="
+          "Value": "sha256-hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc="
         }
       ]
     },
     {
-      "Route": "BazePodatakaProjekt.qmqkvt0618.styles.css",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-qmqkvt0618.gz",
+      "Route": "BazePodatakaProjekt.vbrcobjm4x.styles.css",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-vbrcobjm4x.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001824817518"
+          "Quality": "0.001477104874"
         }
       ],
       "ResponseHeaders": [
@@ -5751,15 +5888,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "676"
         },
         {
           "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5779,13 +5916,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
+          "Value": "W/\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qmqkvt0618"
+          "Value": "vbrcobjm4x"
         },
         {
           "Name": "label",
@@ -5793,12 +5930,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
         }
       ]
     },
     {
-      "Route": "BazePodatakaProjekt.qmqkvt0618.styles.css",
+      "Route": "BazePodatakaProjekt.vbrcobjm4x.styles.css",
       "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\bundle\\BazePodatakaProjekt.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5808,7 +5945,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1137"
+          "Value": "1445"
         },
         {
           "Name": "Content-Type",
@@ -5816,11 +5953,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
+          "Value": "\"pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5830,7 +5967,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qmqkvt0618"
+          "Value": "vbrcobjm4x"
         },
         {
           "Name": "label",
@@ -5838,13 +5975,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
+          "Value": "sha256-pRYLwScS+VqSkzIub4zT9muDFyzk+FAk9cHvvSt7rwE="
         }
       ]
     },
     {
-      "Route": "BazePodatakaProjekt.qmqkvt0618.styles.css.gz",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-qmqkvt0618.gz",
+      "Route": "BazePodatakaProjekt.vbrcobjm4x.styles.css.gz",
+      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-vbrcobjm4x.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5853,7 +5990,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "547"
+          "Value": "676"
         },
         {
           "Name": "Content-Type",
@@ -5861,11 +5998,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
+          "Value": "\"hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
+          "Value": "Sun, 02 Feb 2025 16:07:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5883,7 +6020,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qmqkvt0618"
+          "Value": "vbrcobjm4x"
         },
         {
           "Name": "label",
@@ -5891,144 +6028,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps="
-        }
-      ]
-    },
-    {
-      "Route": "BazePodatakaProjekt.styles.css",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-qmqkvt0618.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001824817518"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "547"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
-        }
-      ]
-    },
-    {
-      "Route": "BazePodatakaProjekt.styles.css",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\scopedcss\\bundle\\BazePodatakaProjekt.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1137"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Lqn7mec48iqiML7dVORzsMX7eODoALiVwm5mF632moc="
-        }
-      ]
-    },
-    {
-      "Route": "BazePodatakaProjekt.styles.css.gz",
-      "AssetFile": "C:\\Users\\krapi\\source\\repos\\BazePodatakaProjekt\\BazePodatakaProjekt\\obj\\Debug\\net9.0\\compressed\\n46cfp8xts-qmqkvt0618.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "547"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 05 Jan 2025 18:28:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-nncPi3U1Nf7F17PaDQkdONEX2QzR1/FMV25L8n+Ryps="
+          "Value": "sha256-hD1Fg8DZubusNzsiFNXOapbunoo+mGFe6JzUTxjAYrc="
         }
       ]
     },
