@@ -1,6 +1,6 @@
 # BazePodatakaProjekt
 
-Ovo je web aplikacija razvijena u sklopu kolegija **Baze podataka**. Aplikacija je namijenjena studentima i omogućuje objavljivanje i pregledavanje oglasa, ostavljanje recenzija, te upravljanje korisničkim profilima. Projekt je razvijen koristeći **ASP.NET Core 9 MVC** i ** Microsoft SQL Server** kao bazu podataka.
+Ovo je web aplikacija razvijena u sklopu kolegija **Baze podataka**. Aplikacija je namijenjena studentima i omogućuje objavljivanje i pregledavanje oglasa, ostavljanje recenzija, te upravljanje korisničkim profilima. Projekt je razvijen koristeći **ASP.NET Core 9 MVC** i **Microsoft SQL Server** kao bazu podataka.
 
 ---
 
