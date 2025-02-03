@@ -27,7 +27,7 @@ Projekt koristi sljedeće tehnologije i alate:
 
 - **ASP.NET Core 9 MVC** za razvoj web aplikacije.
 - **Entity Framework Core** za upravljanje bazom podataka.
-- ** Microsoft SQL Server** za pohranu podataka.
+- **Microsoft SQL Server** za pohranu podataka.
 - **Bootstrap** za responzivan dizajn sučelja.
 - **Git i GitHub** za verzioniranje koda.
 
