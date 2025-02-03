@@ -39,6 +39,8 @@ Projekt koristi sljedeće tehnologije i alate:
 - Registracija i prijava korisnika.
 - Upravljanje korisničkim profilom (ime, prezime, fakultet, opis, profilna slika).
 - Pregled objavljenih oglasa.
+- Pregled omiljenih oglasa.
+- Pregled broja pratitelja i osoba koje korisnik prati.
 
 ### Oglasi
 - Kreiranje, uređivanje i brisanje oglasa.
