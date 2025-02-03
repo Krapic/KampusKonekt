@@ -67,3 +67,6 @@ Slijedite ove korake za postavljanje projekta lokalno:
    ```bash
    git clone https://github.com/tvoje-korisnicko-ime/BazePodatakaProjekt.git
    cd BazePodatakaProjekt
+2. **Ažuriraj bazu podataka:**
+3. ```bash
+   Update-Database
