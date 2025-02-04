@@ -294,7 +294,6 @@
                         $("#reviews-" + jobPostingId).prepend(reviewHtml);
                         $("#rating-" + jobPostingId).val("1");
                         $("#comment-" + jobPostingId).val("");
-                        // Sakrivamo formu jer je korisnik upravo dodao recenziju
                         $("#review-form-" + jobPostingId).hide();
                     } else {
                         alert(response.message);
@@ -353,14 +352,21 @@
                 type: "get",
                 data: { jobPostingId: jobPostingId },
                 success: function (reviews) {
+                    var currentUserId = "@currentUserId";
+
                     var reviewsHtml = reviews.map(function (review) {
+                        var deleteButtonHtml = "";
+                        if (review.userId == currentUserId) {
+                            deleteButtonHtml = `<button onclick="deleteReview(${review.id}, ${jobPostingId})" class="btn btn-danger btn-sm btn-delete-review">Obriši recenziju</button>`;
+                        }
+
                         return `
                             <div class="card mb-2" id="review-${review.id}">
                                 <div class="card-body">
                                     <h5 class="card-title">${review.userName} - Ocjena: ${review.rating}</h5>
                                     <p class="card-text">${review.comment}</p>
                                     <small class="text-muted">${review.reviewDate}</small>
-                                    <button onclick="deleteReview(${review.id}, ${jobPostingId})" class="btn btn-danger btn-sm btn-delete-review">Obriši recenziju</button>
+                                    ${deleteButtonHtml}
                                 </div>
                             </div>
                         `;
@@ -368,7 +374,6 @@
 
                     $("#reviews-" + jobPostingId).html(reviewsHtml);
 
-                    var currentUserId = "@currentUserId";
                     var hasReviewed = reviews.some(function (review) {
                         return review.userId == currentUserId;
                     });

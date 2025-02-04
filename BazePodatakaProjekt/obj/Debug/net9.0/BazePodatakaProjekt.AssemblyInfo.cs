@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BazePodatakaProjekt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cf2b44739e758cf839d5b12c5369d3fab3de32f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac48e4da6d2d96fbef20498d153e7eac19a6a04e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BazePodatakaProjekt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BazePodatakaProjekt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
