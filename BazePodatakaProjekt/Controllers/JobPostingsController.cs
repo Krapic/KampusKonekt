@@ -29,7 +29,6 @@ namespace BazePodatakaProjekt.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(string sortOrder)
         {
-            // Definiraj parametre sortiranja za gumbove u view-u
             ViewData["CategorySortParam"] = sortOrder == "category" ? "category_desc" : "category";
             ViewData["PriceSortParam"] = sortOrder == "price" ? "price_desc" : "price";
             ViewData["DateSortParam"] = sortOrder == "date" ? "date_desc" : "date";
@@ -42,9 +41,8 @@ namespace BazePodatakaProjekt.Controllers
                 .Include(jp => jp.Images)
                 .Include(jp => jp.Reviews)
                 .Include(jp => jp.User)
-                .AsQueryable(); // Omogućava dinamičko sortiranje
+                .AsQueryable();
 
-            // Primjeni sortiranje na temelju sortOrder parametra
             switch (sortOrder)
             {
                 case "category":
@@ -66,7 +64,7 @@ namespace BazePodatakaProjekt.Controllers
                     jobPostings = jobPostings.OrderByDescending(jp => jp.PostedDate);
                     break;
                 default:
-                    jobPostings = jobPostings.OrderByDescending(jp => jp.PostedDate); // Zadano sortiranje
+                    jobPostings = jobPostings.OrderByDescending(jp => jp.PostedDate);
                     break;
             }
 
@@ -74,7 +72,7 @@ namespace BazePodatakaProjekt.Controllers
                 .Select(jp => new JobPostingWithFollowStatusViewModel
                 {
                     JobPosting = jp,
-                    IsFollowing = _context.UserFollows.Any(uf => uf.FollowerId == currentUserId && uf.FollowedId == jp.UserId)
+                    IsFollowing = _context.UserFollows.Any(uf => uf.FollowerId == currentUserId && uf.FollowedId == jp.UserId), Reviews = jp.Reviews
                 }).ToListAsync();
 
             return View(viewModel);
@@ -84,10 +82,9 @@ namespace BazePodatakaProjekt.Controllers
         [Authorize(Roles = "Admin, Employer")]
         public IActionResult Create()
         {
-            ViewBag.Categories = _context.Categories.ToList(); // Osiguraj da su kategorije dostupne u View-u
+            ViewBag.Categories = _context.Categories.ToList();
             return View();
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Create(JobPostingViewModel jobPostingVm)
@@ -109,7 +106,6 @@ namespace BazePodatakaProjekt.Controllers
                 _context.JobPostings.Add(jobPosting);
                 await _context.SaveChangesAsync();
 
-                // Spremanje slike ako postoji
                 if (jobPostingVm.Image != null && jobPostingVm.Image.Length > 0)
                 {
                     var imagePath = "/uploads/" + Guid.NewGuid() + Path.GetExtension(jobPostingVm.Image.FileName);
@@ -143,12 +139,10 @@ namespace BazePodatakaProjekt.Controllers
                 return NotFound();
             }
 
-            // Prvo obriši sve lajkove povezane s ovim oglasom
             var likes = _context.Likes.Where(l => l.JobPostingId == id);
             _context.Likes.RemoveRange(likes);
             await _context.SaveChangesAsync();
 
-            // Sada obriši sam oglas
             _context.JobPostings.Remove(jobPosting);
             await _context.SaveChangesAsync();
 
@@ -235,12 +229,13 @@ namespace BazePodatakaProjekt.Controllers
                 Description = jobPosting.Description,
                 Price = jobPosting.Price,
                 CategoryId = jobPosting.CategoryId,
-                Condition = jobPosting.Condition
+                Condition = jobPosting.Condition,
+                Company = jobPosting.Company,
+                Location = jobPosting.Location
             };
 
             ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name", jobPosting.CategoryId);
 
-            // Eksplicitno vraćamo View iz mape /Views/JobPostings/
             return View("~/Views/JobPostings/Edit.cshtml", viewModel);
         }
 
@@ -274,6 +269,8 @@ namespace BazePodatakaProjekt.Controllers
             jobPosting.Price = model.Price;
             jobPosting.CategoryId = model.CategoryId;
             jobPosting.Condition = model.Condition;
+            jobPosting.Company = model.Company;
+            jobPosting.Location = model.Location;
 
             await _context.SaveChangesAsync();
 
@@ -296,6 +293,90 @@ namespace BazePodatakaProjekt.Controllers
 
 
             return View(likedPosts);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddReview(int jobPostingId, int rating, string comment)
+        {
+            var currentUserId = _userManager.GetUserId(User);
+            var currentUser = await _userManager.FindByIdAsync(currentUserId);
+
+            var existingReview = await _context.Reviews
+                .FirstOrDefaultAsync(r => r.JobPostingId == jobPostingId && r.UserId == currentUserId);
+
+            if (existingReview != null)
+            {
+                return Json(new { success = false, message = "Već ste ostavili recenziju za ovaj oglas." });
+            }
+
+            var review = new Review
+            {
+                JobPostingId = jobPostingId,
+                UserId = currentUserId,
+                Rating = rating,
+                Comment = comment,
+                ReviewDate = DateTime.UtcNow
+            };
+
+            _context.Reviews.Add(review);
+            await _context.SaveChangesAsync();
+
+            return Json(new
+            {
+                success = true,
+                message = "Recenzija uspješno dodana.",
+                review = new
+                {
+                    UserName = currentUser.UserName,
+                    Rating = review.Rating,
+                    Comment = review.Comment,
+                    ReviewDate = review.ReviewDate.ToShortDateString()
+                }
+            });
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetReviews(int jobPostingId)
+        {
+            var reviews = await _context.Reviews
+                .Include(r => r.User)
+                .Where(r => r.JobPostingId == jobPostingId)
+                .OrderByDescending(r => r.ReviewDate)
+                .Select(r => new
+                {
+                    id = r.Id,
+                    userName = r.User.UserName,
+                    rating = r.Rating,
+                    comment = r.Comment,
+                    reviewDate = r.ReviewDate.ToShortDateString(),
+                    userId = r.UserId
+                })
+                .ToListAsync();
+
+            return Json(reviews);
+        }
+
+        [HttpDelete]
+        [Route("JobPostings/DeleteReview/{id}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteReview(int id)
+        {
+            Console.WriteLine($"Pokušaj brisanja recenzije s ID: {id}");
+
+            var review = await _context.Reviews.FindAsync(id);
+            if (review == null)
+            {
+                Console.WriteLine("Greška: Recenzija nije pronađena.");
+                return NotFound(new { message = "Recenzija nije pronađena." });
+            }
+
+            _context.Reviews.Remove(review);
+            await _context.SaveChangesAsync();
+
+            Console.WriteLine("Recenzija uspješno obrisana.");
+            return Ok(new { message = "Recenzija uspješno obrisana." });
         }
     }
 }

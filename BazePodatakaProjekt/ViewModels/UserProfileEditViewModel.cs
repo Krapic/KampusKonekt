@@ -19,7 +19,6 @@ namespace BazePodatakaProjekt.ViewModels
         [Phone(ErrorMessage = "Neispravan format broja telefona.")]
         public string PhoneNumber { get; set; }
 
-        // Ova polja nisu obavezna, pa uklanjamo [Required]
         public string Faculty { get; set; }
         public string Bio { get; set; }
         public string ProfilePicture { get; set; }

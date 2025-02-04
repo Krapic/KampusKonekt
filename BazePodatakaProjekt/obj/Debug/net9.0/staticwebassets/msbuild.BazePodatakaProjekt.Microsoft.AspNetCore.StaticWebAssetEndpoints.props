@@ -4,13 +4,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-pRYLwScS\u002BVqSkzIub4zT9muDFyzk\u002BFAk9cHvvSt7rwE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1445"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pRYLwScS\u002BVqSkzIub4zT9muDFyzk\u002BFAk9cHvvSt7rwE=\u0022"},{"Name":"Last-Modified","Value":"Sun, 02 Feb 2025 16:07:24 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1445"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pRYLwScS\u002BVqSkzIub4zT9muDFyzk\u002BFAk9cHvvSt7rwE=\u0022"},{"Name":"Last-Modified","Value":"Sun, 02 Feb 2025 16:37:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/BazePodatakaProjekt/BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BazePodatakaProjekt.vbrcobjm4x.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vbrcobjm4x"},{"Name":"integrity","Value":"sha256-pRYLwScS\u002BVqSkzIub4zT9muDFyzk\u002BFAk9cHvvSt7rwE="},{"Name":"label","Value":"_content/BazePodatakaProjekt/BazePodatakaProjekt.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1445"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pRYLwScS\u002BVqSkzIub4zT9muDFyzk\u002BFAk9cHvvSt7rwE=\u0022"},{"Name":"Last-Modified","Value":"Sun, 02 Feb 2025 16:07:24 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1445"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pRYLwScS\u002BVqSkzIub4zT9muDFyzk\u002BFAk9cHvvSt7rwE=\u0022"},{"Name":"Last-Modified","Value":"Sun, 02 Feb 2025 16:37:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/BazePodatakaProjekt/css/site.b9sayid5wm.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>

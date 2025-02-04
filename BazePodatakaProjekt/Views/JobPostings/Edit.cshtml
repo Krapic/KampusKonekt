@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Company">Tvrtka</label>
+        <label asp-for="Company">Fakultet</label>
         <input asp-for="Company" class="form-control" />
         <span asp-validation-for="Company" class="text-danger"></span>
     </div>
@@ -51,6 +51,7 @@
         <select asp-for="Condition" class="form-control">
             <option value="New">Novo</option>
             <option value="Used">Rabljeno</option>
+            <option value="Used">Neispravno</option>
         </select>
         <span asp-validation-for="Condition" class="text-danger"></span>
     </div>

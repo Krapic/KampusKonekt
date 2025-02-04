@@ -9,11 +9,11 @@
     <input type="hidden" id="csrfToken" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
 </form>
 
-<h2>Oglasi koje ste lajkali</h2>
+<h2>Omiljeni oglasi</h2>
 
 @if (Model.Count == 0)
 {
-    <p>Nemate omiljene oglase.</p>
+    <p class="mt-5">Nemate omiljene oglase.</p>
 }
 else
 {

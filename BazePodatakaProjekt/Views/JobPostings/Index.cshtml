@@ -5,6 +5,47 @@
     var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 }
 
+<!-- Skriveni anti-forgery token za AJAX pozive -->
+<div style="display:none">
+    @Html.AntiForgeryToken()
+</div>
+
+<style>
+    .review-section .card {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-section .card-body {
+        padding: 15px;
+    }
+
+    .review-section .card-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .review-section .card-text {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    .review-section .text-muted {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .review-section .btn-delete-review {
+        margin-top: 10px;
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+</style>
+
 <h1 class="text-center m-5">Sve usluge</h1>
 
 <div class="btn-group mb-3">
@@ -68,6 +109,37 @@
                     </div>
                 </div>
             }
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h4>Recenzije:</h4>
+                    <!-- Recenzije se učitavaju dinamički putem AJAX-a -->
+                    <div id="reviews-@jobPosting.Id" class="review-section" data-job-posting-id="@jobPosting.Id">
+                    </div>
+
+                    @* Forma za unos recenzije se prikazuje samo ako korisnik nije vlasnik oglasa *@
+                    @if (User.Identity.IsAuthenticated && jobPosting.UserId != currentUserId)
+                    {
+                        <form id="review-form-@jobPosting.Id" onsubmit="addReview(@jobPosting.Id); return false;" class="mt-3">
+                            <input type="hidden" name="jobPostingId" value="@jobPosting.Id" />
+                            <div class="form-group">
+                                <label for="rating-@jobPosting.Id">Ocjena:</label>
+                                <select id="rating-@jobPosting.Id" name="rating" class="form-control" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment-@jobPosting.Id">Komentar:</label>
+                                <textarea id="comment-@jobPosting.Id" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Dodaj recenziju</button>
+                        </form>
+                    }
+                </div>
+            </div>
 
             <div class="row mt-4">
                 <div class="col-md-12">
@@ -99,13 +171,6 @@
                                     <text>👤 Pratite korisnika</text>
                                 }
                             </button>
-                        </div>
-                    }
-
-                    @if (User.IsInRole(Roles.Admin) || (User.IsInRole(Roles.Employer) && jobPosting.UserId == currentUserId))
-                    {
-                        <div class="md-3">
-                            <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-sm btn-danger">Obriši</button>
                         </div>
                     }
 
@@ -144,7 +209,7 @@
                     url: "@Url.Action("Approve", "JobPostings")/" + id,
                     type: "post",
                     success: function (result) {
-                        location.reload(); // Osvježi stranicu nakon odobravanja
+                        location.reload();
                     },
                     error: function (err) {
                         alert(err);
@@ -162,7 +227,7 @@
                 success: function (result) {
                     console.log("Like successful. New like count:", result.likeCount);
                     $("#like-count-" + jobPostingId).text(result.likeCount);
-                    location.reload(); // Osvježi stranicu kako bi se prikazala ažurirana tipka za lajkanje
+                    location.reload();
                 },
                 error: function (err) {
                     console.error("Error while liking:", err);
@@ -179,7 +244,7 @@
                 data: { userId: userId },
                 success: function (result) {
                     alert("Sada pratite ovog korisnika.");
-                    location.reload(); // Osvježi stranicu kako bi se prikazala ažurirana tipka
+                    location.reload();
                 },
                 error: function (err) {
                     console.error("Error while following user:", err);
@@ -196,11 +261,126 @@
                 data: { userId: userId },
                 success: function (result) {
                     alert("Prestali ste pratiti ovog korisnika.");
-                    location.reload(); // Osvježi stranicu kako bi se prikazala ažurirana tipka
+                    location.reload();
                 },
                 error: function (err) {
                     console.error("Error while unfollowing user:", err);
                     alert("Došlo je do greške prilikom otpraćivanja korisnika.");
+                }
+            });
+        }
+
+        function addReview(jobPostingId) {
+            var rating = $("#rating-" + jobPostingId).val();
+            var comment = $("#comment-" + jobPostingId).val();
+
+            $.ajax({
+                url: "@Url.Action("AddReview", "JobPostings")",
+                type: "post",
+                data: { jobPostingId: jobPostingId, rating: rating, comment: comment },
+                success: function (response) {
+                    console.log(response);
+                    if (response.success) {
+                        var reviewHtml = `
+                            <div class="card mb-2" id="review-${response.review.id}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${response.review.userName} - Ocjena: ${response.review.rating}</h5>
+                                    <p class="card-text">${response.review.comment}</p>
+                                    <small class="text-muted">${response.review.reviewDate}</small>
+                                    <button onclick="deleteReview(${response.review.id}, ${jobPostingId})" class="btn btn-danger btn-sm btn-delete-review">Obriši recenziju</button>
+                                </div>
+                            </div>
+                        `;
+                        $("#reviews-" + jobPostingId).prepend(reviewHtml);
+                        $("#rating-" + jobPostingId).val("1");
+                        $("#comment-" + jobPostingId).val("");
+                        // Sakrivamo formu jer je korisnik upravo dodao recenziju
+                        $("#review-form-" + jobPostingId).hide();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (err) {
+                    alert("Došlo je do greške prilikom dodavanja recenzije.");
+                }
+            });
+        }
+
+        function deleteReview(reviewId, jobPostingId) {
+            if (!reviewId) {
+                console.error("Greška: reviewId nije definiran!");
+                return;
+            }
+
+            var tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (!tokenElement) {
+                console.error("Anti-forgery token nije pronađen!");
+                return;
+            }
+            var token = tokenElement.value;
+
+            fetch(`/JobPostings/DeleteReview/${reviewId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "RequestVerificationToken": token
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Greška kod brisanja recenzije: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Recenzija obrisana:", data.message);
+                $(`#review-${reviewId}`).remove();
+                $("#review-form-" + jobPostingId).show();
+            })
+            .catch(error => console.error("Error deleting review:", error));
+        }
+
+        $(document).ready(function () {
+            $(".review-section").each(function () {
+                var jobPostingId = $(this).data("job-posting-id");
+                loadReviews(jobPostingId);
+            });
+        });
+
+        function loadReviews(jobPostingId) {
+            $.ajax({
+                url: "@Url.Action("GetReviews", "JobPostings")",
+                type: "get",
+                data: { jobPostingId: jobPostingId },
+                success: function (reviews) {
+                    var reviewsHtml = reviews.map(function (review) {
+                        return `
+                            <div class="card mb-2" id="review-${review.id}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${review.userName} - Ocjena: ${review.rating}</h5>
+                                    <p class="card-text">${review.comment}</p>
+                                    <small class="text-muted">${review.reviewDate}</small>
+                                    <button onclick="deleteReview(${review.id}, ${jobPostingId})" class="btn btn-danger btn-sm btn-delete-review">Obriši recenziju</button>
+                                </div>
+                            </div>
+                        `;
+                    }).join("");
+
+                    $("#reviews-" + jobPostingId).html(reviewsHtml);
+
+                    var currentUserId = "@currentUserId";
+                    var hasReviewed = reviews.some(function (review) {
+                        return review.userId == currentUserId;
+                    });
+
+                    if (hasReviewed) {
+                        $("#review-form-" + jobPostingId).hide();
+                    } else {
+                        $("#review-form-" + jobPostingId).show();
+                    }
+                },
+                error: function (err) {
+                    console.error("Došlo je do greške prilikom učitavanja recenzija.", err);
                 }
             });
         }
