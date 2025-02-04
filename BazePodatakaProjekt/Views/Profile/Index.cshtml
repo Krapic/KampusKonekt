@@ -1,4 +1,5 @@
-﻿@model BazePodatakaProjekt.ViewModels.UserProfileViewModel
+﻿@using BazePodatakaProjekt.Constants
+@model BazePodatakaProjekt.ViewModels.UserProfileViewModel
 
 @{
     ViewData["Title"] = "Profil korisnika";
@@ -26,26 +27,57 @@
         </div>
     </div>
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <h2 class="card-title">Objavljeni oglasi</h2>
+    @if (User.IsInRole(Roles.Admin))
+    {
+        var allJobPostings = ViewBag.AllJobPostings as IEnumerable<BazePodatakaProjekt.Models.JobPosting>;
+        if (allJobPostings != null && allJobPostings.Any())
+        {
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">Svi oglasi (od svih korisnika)</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach (var jobPosting in allJobPostings)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>@jobPosting.Title</h5>
+                                    <p>@jobPosting.Description</p>
+                                    <small>Objavio: @jobPosting.User?.UserName</small>
+                                </div>
+                                <a asp-action="Edit" asp-controller="JobPostings" asp-route-id="@jobPosting.Id" class="btn btn-warning">Uredi</a>
+                                <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-danger btn-sm">Obriši</button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+
+    @if (!User.IsInRole(Roles.Admin)) {
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Objavljeni oglasi</h2>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var jobPosting in Model.JobPostings)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5>@jobPosting.Title</h5>
+                                <p>@jobPosting.Description</p>
+                            </div>
+                            <a asp-action="Edit" asp-controller="JobPostings" asp-route-id="@jobPosting.Id" class="btn btn-warning">Uredi</a>
+                            <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-danger btn-sm">Obriši</button>
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
-        <div class="card-body">
-            <ul class="list-group">
-                @foreach (var jobPosting in Model.JobPostings)
-                {
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5>@jobPosting.Title</h5>
-                            <p>@jobPosting.Description</p>
-                        </div>
-                        <a asp-action="Edit" asp-controller="JobPostings" asp-route-id="@jobPosting.Id" class="btn btn-warning">Uredi</a>
-                        <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-danger btn-sm">Obriši</button>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
+    }
 
     <div class="card mb-4">
         <div class="card-header">

@@ -1,4 +1,5 @@
-﻿using BazePodatakaProjekt.Data;
+﻿using BazePodatakaProjekt.Constants;
+using BazePodatakaProjekt.Data;
 using BazePodatakaProjekt.Models;
 using BazePodatakaProjekt.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -56,6 +57,17 @@ namespace BazePodatakaProjekt.Controllers
                     ProfilePicture = userProfile?.ProfilePicture ?? ""
                 }
             };
+
+            if (User.IsInRole(Roles.Admin))
+            {
+                ViewBag.AllJobPostings = await _context.JobPostings
+                     .Include(jp => jp.User)
+                     .Include(jp => jp.Likes)
+                     .Include(jp => jp.Category)
+                     .Include(jp => jp.Images)
+                     .Include(jp => jp.Reviews)
+                     .ToListAsync();
+            }
 
             return View(userProfileViewModel);
         }

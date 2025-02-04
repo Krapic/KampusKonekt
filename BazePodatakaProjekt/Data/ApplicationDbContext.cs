@@ -60,9 +60,9 @@ namespace BazePodatakaProjekt.Data
 
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.JobPosting)
-                .WithMany(jp => jp.Reviews)
+                .WithMany(j => j.Reviews)
                 .HasForeignKey(r => r.JobPostingId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade); ;
 
             modelBuilder.Entity<UserFollow>()
                 .HasKey(uf => new { uf.FollowerId, uf.FollowedId });

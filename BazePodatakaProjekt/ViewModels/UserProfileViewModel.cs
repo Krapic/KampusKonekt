@@ -6,10 +6,11 @@ namespace BazePodatakaProjekt.ViewModels
 {
     public class UserProfileViewModel
     {
-        public IdentityUser User { get; set; } // Osnovni podaci o korisniku
-        public List<JobPosting> JobPostings { get; set; } // Objavljeni oglasi
-        public List<IdentityUser> Followers { get; set; } // Korisnici koji prate ovog korisnika
-        public List<IdentityUser> Following { get; set; } // Korisnici koje ovaj korisnik prati
-        public UserProfileEditViewModel EditProfile { get; set; } // Podaci za uređivanje profila
+        public IdentityUser User { get; set; }
+        public List<JobPosting> JobPostings { get; set; }
+        public List<IdentityUser> Followers { get; set; }
+        public List<IdentityUser> Following { get; set; }
+        public UserProfileEditViewModel EditProfile { get; set; }
+        public IEnumerable<JobPosting> AllJobPostings { get; set; }
     }
 }

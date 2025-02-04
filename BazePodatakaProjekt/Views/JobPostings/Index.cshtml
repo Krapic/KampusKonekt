@@ -109,6 +109,8 @@
                     </div>
                 </div>
             }
+
+            <!-- Sekcija s recenzijama -->
             <div class="row mt-4">
                 <div class="col-md-12">
                     <h4>Recenzije:</h4>
@@ -116,7 +118,7 @@
                     <div id="reviews-@jobPosting.Id" class="review-section" data-job-posting-id="@jobPosting.Id">
                     </div>
 
-                    @* Forma za unos recenzije se prikazuje samo ako korisnik nije vlasnik oglasa *@
+                    @* Forma za unos recenzije, prikazana je samo ako korisnik nije vlasnik oglasa *@
                     @if (User.Identity.IsAuthenticated && jobPosting.UserId != currentUserId)
                     {
                         <form id="review-form-@jobPosting.Id" onsubmit="addReview(@jobPosting.Id); return false;" class="mt-3">
@@ -143,6 +145,7 @@
 
             <div class="row mt-4">
                 <div class="col-md-12">
+                    @* Tipke za lajkanje i praćenje *@
                     @if (User.Identity.IsAuthenticated && jobPosting.UserId != currentUserId || User.IsInRole(Roles.Admin))
                     {
                         <div class="mb-2">
@@ -174,10 +177,19 @@
                         </div>
                     }
 
+                    @* Tipka za odobravanje, prikazana je za admina ako oglas nije odobren *@
                     @if (User.IsInRole(Roles.Admin) && !jobPosting.IsApproved)
                     {
                         <div>
                             <button onclick="approveJobPosting(@jobPosting.Id)" class="btn btn-sm btn-success">Odobri</button>
+                        </div>
+                    }
+
+                    @* NOVO: Tipka za brisanje objave, prikazana samo adminima *@
+                    @if (User.IsInRole(Roles.Admin))
+                    {
+                        <div>
+                            <button onclick="deleteJobPosting(@jobPosting.Id)" class="btn btn-sm btn-danger">Obriši objavu</button>
                         </div>
                     }
                 </div>
@@ -189,7 +201,7 @@
 @section Scripts {
     <script>
         function deleteJobPosting(id) {
-            if (confirm("Jeste li sigurni da želite obrisati ovaj oglas?")) {
+            if (confirm("Jeste li sigurni da želite obrisati ovu objavu?")) {
                 $.ajax({
                     url: "@Url.Action("Delete", "JobPostings")/" + id,
                     type: "delete",
@@ -197,14 +209,14 @@
                         $("#job-posting-" + id).remove();
                     },
                     error: function (err) {
-                        alert(err);
+                        alert("Došlo je do greške prilikom brisanja objave.");
                     }
                 });
             }
         }
 
         function approveJobPosting(id) {
-            if (confirm("Jeste li sigurni da želite odobriti ovaj oglas?")) {
+            if (confirm("Jeste li sigurni da želite odobriti ovu objavu?")) {
                 $.ajax({
                     url: "@Url.Action("Approve", "JobPostings")/" + id,
                     type: "post",
@@ -212,7 +224,7 @@
                         location.reload();
                     },
                     error: function (err) {
-                        alert(err);
+                        alert("Došlo je do greške prilikom odobravanja objave.");
                     }
                 });
             }
@@ -294,6 +306,7 @@
                         $("#reviews-" + jobPostingId).prepend(reviewHtml);
                         $("#rating-" + jobPostingId).val("1");
                         $("#comment-" + jobPostingId).val("");
+                        // Sakrivamo formu jer je korisnik upravo dodao recenziju
                         $("#review-form-" + jobPostingId).hide();
                     } else {
                         alert(response.message);
@@ -353,10 +366,11 @@
                 data: { jobPostingId: jobPostingId },
                 success: function (reviews) {
                     var currentUserId = "@currentUserId";
-
                     var reviewsHtml = reviews.map(function (review) {
                         var deleteButtonHtml = "";
-                        if (review.userId == currentUserId) {
+                        // Prikazujemo gumb za brisanje samo ako je autor recenzije ili je admin
+                        var isAdmin = "@(User.IsInRole(Roles.Admin) ? "true" : "false")";
+                        if (review.userId == currentUserId || isAdmin == "true") {
                             deleteButtonHtml = `<button onclick="deleteReview(${review.id}, ${jobPostingId})" class="btn btn-danger btn-sm btn-delete-review">Obriši recenziju</button>`;
                         }
 
